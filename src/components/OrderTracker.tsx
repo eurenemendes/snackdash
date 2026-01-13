@@ -26,12 +26,8 @@ export default function OrderTracker() {
   }, [currentStep]);
   
   const progressPercentage = (currentStep / (orderSteps.length - 1)) * 100;
-  const currentStepData = orderSteps[currentStep];
-
-  if (!currentStepData) {
-    // Return null or a loading state if the step is invalid
-    return null;
-  }
+  const validStep = Math.min(currentStep, orderSteps.length - 1);
+  const currentStepData = orderSteps[validStep];
 
   return (
     <div className="w-full">
