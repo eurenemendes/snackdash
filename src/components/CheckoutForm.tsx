@@ -35,26 +35,41 @@ export default function CheckoutForm() {
 
     setIsLoading(true);
 
+    const orderId = Math.random().toString(36).substr(2, 9);
+    const returnUrl = `${window.location.origin}/order/${orderId}`;
+
+
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Return URL where the customer should be redirected after the PaymentIntent is confirmed.
+        return_url: returnUrl,
       },
-      redirect: 'if_required',
+      // redirect: 'if_required' will not work for 3D Secure on some payment methods.
+      // We will handle the redirect manually after success.
     });
 
     if (error) {
-      toast({
-        title: 'Erro no Pagamento',
-        description: error.message,
-        variant: 'destructive',
-      });
+       if (error.type === "card_error" || error.type === "validation_error") {
+        toast({
+            title: 'Erro no Pagamento',
+            description: error.message,
+            variant: 'destructive',
+        });
+       } else {
+        toast({
+            title: 'Erro Inesperado',
+            description: 'Ocorreu um erro inesperado. Tente novamente.',
+            variant: 'destructive',
+        });
+       }
       setIsLoading(false);
       return;
     }
 
-    // Payment succeeded
-    const orderId = Math.random().toString(36).substr(2, 9);
+    // This point will only be reached if the payment succeeds without a redirect.
+    // For payments that require a redirect (like 3D Secure), the user will be
+    // sent to the `return_url` and this code will not be executed.
+    // The logic is now on the order page.
     toast({
       title: 'Pagamento aprovado!',
       description: 'Seu pedido está sendo preparado.',

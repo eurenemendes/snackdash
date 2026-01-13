@@ -1,7 +1,30 @@
+'use client';
+
+import { useEffect } from 'react';
 import OrderTracker from "@/components/OrderTracker";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { useToast } from '@/hooks/use-toast';
+import { useCart } from '@/context/CartContext';
 
 export default function OrderPage({ params }: { params: { id: string } }) {
+  const { toast } = useToast();
+  const { dispatch } = useCart();
+
+  useEffect(() => {
+    // This effect runs when the user is redirected back from Stripe 3D Secure.
+    const url = new URL(window.location.href);
+    const clientSecret = url.searchParams.get('payment_intent_client_secret');
+    
+    if (clientSecret) {
+      toast({
+        title: 'Pagamento aprovado!',
+        description: 'Seu pedido está sendo preparado.',
+        variant: 'default',
+      });
+      dispatch({ type: 'CLEAR_CART' });
+    }
+  }, [dispatch, toast]);
+
   return (
     <div className="container mx-auto max-w-2xl px-4 py-8">
       <Card className="overflow-hidden">
