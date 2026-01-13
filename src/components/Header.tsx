@@ -12,6 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetDescription,
 } from '@/components/ui/sheet';
 
 export default function Header() {
@@ -41,6 +42,9 @@ export default function Header() {
             <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
               <SheetHeader className="px-6">
                 <SheetTitle>Seu Carrinho</SheetTitle>
+                <SheetDescription>
+                  Revise os itens e prossiga para o checkout.
+                </SheetDescription>
               </SheetHeader>
               <Cart />
             </SheetContent>

@@ -23,17 +23,24 @@ export async function getSnackSuggestions(
 
 export async function createPaymentIntent(amount: number) {
   console.log(`[actions.ts] Criando PaymentIntent para o valor: ${amount}`);
+  if (amount < 50) { // Stripe minimum is $0.50, or 50 cents
+    console.error(`[actions.ts] Erro: Valor do pagamento ${amount} é menor que o mínimo permitido (50).`);
+    return { error: 'O valor do pagamento é muito baixo.' };
+  }
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: 'brl',
-      payment_method_types: ['card', 'pix'],
+      automatic_payment_methods: {
+        enabled: true,
+      },
     });
 
     console.log('[actions.ts] PaymentIntent criado com sucesso:', paymentIntent.id);
     return { clientSecret: paymentIntent.client_secret };
   } catch (error) {
     console.error('[actions.ts] Erro ao criar PaymentIntent:', error);
-    return { error: 'Could not create payment intent' };
+    const errorMessage = error instanceof Error ? error.message : 'Could not create payment intent';
+    return { error: errorMessage };
   }
 }
