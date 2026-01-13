@@ -1,3 +1,68 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "x-burger",
+      "name": "X-Burger Clássico",
+      "description": "Pão, hambúrguer de 150g, queijo cheddar, alface, tomate e nosso molho especial.",
+      "price": 22.5,
+      "imageUrl": "https://images.unsplash.com/photo-1632552544450-ed380a0372e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YmVlZiUyMGJ1cmdlcnxlbnwwfHx8fDE3NjgyODI0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beef burger"
+    },
+    {
+      "id": "batata-frita",
+      "name": "Batata Frita Crocante",
+      "description": "Porção generosa de batatas fritas sequinhas e crocantes, acompanhadas de maionese da casa.",
+      "price": 15,
+      "imageUrl": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmcmVuY2glMjBmcmllc3xlbnwwfHx8fDE3NjgyNDM1MTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "french fries"
+    },
+    {
+      "id": "milkshake-chocolate",
+      "name": "Milk-shake de Chocolate",
+      "description": "Cremoso milk-shake de chocolate feito com sorvete artesanal e calda de chocolate.",
+      "price": 18,
+      "imageUrl": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaG9jb2xhdGUlMjBtaWxrc2hha2V8ZW58MHx8fHwxNzY4MjI4NjgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chocolate milkshake"
+    },
+    {
+      "id": "hot-dog",
+      "name": "Hot-Dog Especial",
+      "description": "Pão de hot-dog, salsicha, purê de batata, vinagrete, milho, ervilha e batata palha.",
+      "price": 16.5,
+      "imageUrl": "https://images.unsplash.com/photo-1607103071568-159bb70b4bf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnb3VybWV0JTIwaG90ZG9nfGVufDB8fHx8MTc2ODMwODg3OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "gourmet hotdog"
+    },
+    {
+      "id": "onion-rings",
+      "name": "Anéis de Cebola",
+      "description": "Anéis de cebola empanados e fritos, servidos com molho barbecue.",
+      "price": 17,
+      "imageUrl": "https://images.unsplash.com/photo-1625938146369-adc83368bda7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxvbmlvbiUyMHJpbmdzfGVufDB8fHx8MTc2ODIyNTQzMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "onion rings"
+    },
+    {
+      "id": "refrigerante",
+      "name": "Refrigerante Lata",
+      "description": "Escolha entre as opções de refrigerante em lata 350ml.",
+      "price": 6,
+      "imageUrl": "https://images.unsplash.com/photo-1598038990523-32bcaa29f679?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzb2RhJTIwY2FufGVufDB8fHx8MTc2ODI3NjY0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "soda can"
+    },
+    {
+      "id": "x-bacon",
+      "name": "X-Bacon Turbinado",
+      "description": "Nosso X-Burger com fatias generosas de bacon crocante e cebola caramelizada.",
+      "price": 26,
+      "imageUrl": "https://images.unsplash.com/photo-1592887777607-670896dcfe87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxiYWNvbiUyMGJ1cmdlcnxlbnwwfHx8fDE3NjgyMjc0MDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bacon burger"
+    },
+    {
+      "id": "suco-laranja",
+      "name": "Suco de Laranja Natural",
+      "description": "Suco de laranja espremido na hora, 500ml de pura vitamina C.",
+      "price": 12,
+      "imageUrl": "https://images.unsplash.com/photo-1599360889420-da1afaba9edc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvcmFuZ2UlMjBqdWljZXxlbnwwfHx8fDE3NjgyMjM3OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "orange juice"
+    }
+  ]
 }

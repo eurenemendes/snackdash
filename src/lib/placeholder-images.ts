@@ -1,10 +1,12 @@
 import data from './placeholder-images.json';
 
-export type ImagePlaceholder = {
+export type Snack = {
   id: string;
+  name: string;
   description: string;
+  price: number;
   imageUrl: string;
   imageHint: string;
 };
 
-export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
+export const snacks: Snack[] = data.placeholderImages;
