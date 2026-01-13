@@ -22,6 +22,7 @@ export async function getSnackSuggestions(
 }
 
 export async function createPaymentIntent(amount: number) {
+  console.log(`[actions.ts] Criando PaymentIntent para o valor: ${amount}`);
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
@@ -31,9 +32,10 @@ export async function createPaymentIntent(amount: number) {
       },
     });
 
+    console.log('[actions.ts] PaymentIntent criado com sucesso:', paymentIntent.id);
     return { clientSecret: paymentIntent.client_secret };
   } catch (error) {
-    console.error('Error creating payment intent:', error);
+    console.error('[actions.ts] Erro ao criar PaymentIntent:', error);
     return { error: 'Could not create payment intent' };
   }
 }

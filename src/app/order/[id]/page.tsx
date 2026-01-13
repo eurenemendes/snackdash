@@ -11,17 +11,22 @@ export default function OrderPage({ params }: { params: { id: string } }) {
   const { dispatch } = useCart();
 
   useEffect(() => {
+    console.log('[OrderPage] Página carregada.');
     // This effect runs when the user is redirected back from Stripe 3D Secure.
     const url = new URL(window.location.href);
     const clientSecret = url.searchParams.get('payment_intent_client_secret');
     
     if (clientSecret) {
+      console.log(`[OrderPage] Encontrado payment_intent_client_secret na URL: ${clientSecret}`);
       toast({
         title: 'Pagamento aprovado!',
         description: 'Seu pedido está sendo preparado.',
         variant: 'default',
       });
+      console.log('[OrderPage] Limpando o carrinho.');
       dispatch({ type: 'CLEAR_CART' });
+    } else {
+      console.log('[OrderPage] Nenhum payment_intent_client_secret encontrado na URL.');
     }
   }, [dispatch, toast]);
 

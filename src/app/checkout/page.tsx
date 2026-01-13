@@ -16,11 +16,16 @@ export default function CheckoutPage() {
   const amount = Math.round((totalPrice + shippingCost) * 100);
 
   useEffect(() => {
+    console.log(`[CheckoutPage] Montado. Valor total (em centavos): ${amount}`);
     if (amount > 0) {
+      console.log('[CheckoutPage] Solicitando clientSecret...');
       createPaymentIntent(amount)
         .then(data => {
             if (data.clientSecret) {
+                console.log('[CheckoutPage] clientSecret recebido:', data.clientSecret);
                 setClientSecret(data.clientSecret);
+            } else {
+              console.error('[CheckoutPage] Erro ao obter clientSecret:', data.error);
             }
         });
     }

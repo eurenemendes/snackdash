@@ -28,8 +28,10 @@ export default function CheckoutForm() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    console.log('[CheckoutForm] handleSubmit acionado.');
 
     if (!stripe || !elements) {
+      console.log('[CheckoutForm] Stripe.js ou Elements não carregado.');
       return;
     }
 
@@ -37,6 +39,8 @@ export default function CheckoutForm() {
 
     const orderId = Math.random().toString(36).substr(2, 9);
     const returnUrl = `${window.location.origin}/order/${orderId}`;
+    console.log(`[CheckoutForm] ID do pedido gerado: ${orderId}`);
+    console.log(`[CheckoutForm] URL de retorno: ${returnUrl}`);
 
 
     const { error } = await stripe.confirmPayment({
@@ -44,11 +48,10 @@ export default function CheckoutForm() {
       confirmParams: {
         return_url: returnUrl,
       },
-      // redirect: 'if_required' will not work for 3D Secure on some payment methods.
-      // We will handle the redirect manually after success.
     });
 
     if (error) {
+       console.error('[CheckoutForm] Erro ao confirmar pagamento:', error);
        if (error.type === "card_error" || error.type === "validation_error") {
         toast({
             title: 'Erro no Pagamento',
@@ -66,6 +69,7 @@ export default function CheckoutForm() {
       return;
     }
 
+    console.log('[CheckoutForm] Pagamento confirmado sem redirecionamento. Isso geralmente não acontece com 3D Secure.');
     // This point will only be reached if the payment succeeds without a redirect.
     // For payments that require a redirect (like 3D Secure), the user will be
     // sent to the `return_url` and this code will not be executed.
