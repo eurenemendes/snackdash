@@ -26,6 +26,12 @@ export default function OrderTracker() {
   }, [currentStep]);
   
   const progressPercentage = (currentStep / (orderSteps.length - 1)) * 100;
+  const currentStepData = orderSteps[currentStep];
+
+  if (!currentStepData) {
+    // Return null or a loading state if the step is invalid
+    return null;
+  }
 
   return (
     <div className="w-full">
@@ -53,7 +59,7 @@ export default function OrderTracker() {
         </div>
       </div>
       <div className='text-center'>
-        <p className="text-lg font-semibold">{orderSteps[currentStep].name}</p>
+        <p className="text-lg font-semibold">{currentStepData.name}</p>
         <p className="text-sm text-muted-foreground">
             {currentStep === orderSteps.length - 1 ? 'Bom apetite!' : 'Estamos preparando tudo com carinho.'}
         </p>
