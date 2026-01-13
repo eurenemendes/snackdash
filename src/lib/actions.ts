@@ -27,9 +27,7 @@ export async function createPaymentIntent(amount: number) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: 'brl',
-      automatic_payment_methods: {
-        enabled: true,
-      },
+      payment_method_types: ['card', 'pix'],
     });
 
     console.log('[actions.ts] PaymentIntent criado com sucesso:', paymentIntent.id);
