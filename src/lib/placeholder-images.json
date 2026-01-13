@@ -63,6 +63,14 @@
       "price": 12,
       "imageUrl": "https://images.unsplash.com/photo-1599360889420-da1afaba9edc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvcmFuZ2UlMjBqdWljZXxlbnwwfHx8fDE3NjgyMjM3OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "orange juice"
+    },
+    {
+      "id": "cafe",
+      "name": "Café Expresso",
+      "description": "Café expresso forte e encorpado para dar aquele ânimo.",
+      "price": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1599399432986-7492a2455554?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxlc3ByZXNzbyUyMGNvZmZlZXxlbnwwfHx8fDE3NjgyODU3ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "espresso coffee"
     }
   ]
 }

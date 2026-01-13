@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useReducer, type ReactNode } from 'react';
+import { createContext, useContext, useReducer, type ReactNode, useState } from 'react';
 import type { CartItem } from '@/types';
 import type { Snack } from '@/lib/placeholder-images';
 import { useToast } from '@/hooks/use-toast';
@@ -21,6 +21,8 @@ const CartContext = createContext<
       dispatch: React.Dispatch<CartAction>;
       totalPrice: number;
       itemCount: number;
+      shippingCost: number;
+      setShippingCost: (cost: number) => void;
     }
   | undefined
 >(undefined);
@@ -77,6 +79,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
+  const [shippingCost, setShippingCost] = useState(0.2);
   const { toast } = useToast();
 
   const enhancedDispatch: React.Dispatch<CartAction> = (action) => {
@@ -103,7 +106,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <CartContext.Provider value={{ state, dispatch: enhancedDispatch, totalPrice, itemCount }}>
+    <CartContext.Provider value={{ state, dispatch: enhancedDispatch, totalPrice, itemCount, shippingCost, setShippingCost }}>
       {children}
     </CartContext.Provider>
   );

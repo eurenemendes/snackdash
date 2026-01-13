@@ -38,7 +38,7 @@ function formatCurrency(value: number) {
 }
 
 export default function CheckoutForm() {
-  const { state, totalPrice, dispatch } = useCart();
+  const { state, totalPrice, shippingCost, dispatch } = useCart();
   const { toast } = useToast();
   const router = useRouter();
 
@@ -93,12 +93,12 @@ export default function CheckoutForm() {
           </div>
           <div className="flex justify-between text-sm text-muted-foreground">
             <span>Taxa de Entrega</span>
-            <span>{formatCurrency(5)}</span>
+            <span>{shippingCost > 0 ? formatCurrency(shippingCost) : 'Grátis'}</span>
           </div>
           <Separator />
           <div className="flex justify-between font-bold text-lg">
             <span>Total</span>
-            <span>{formatCurrency(totalPrice + 5)}</span>
+            <span>{formatCurrency(totalPrice + shippingCost)}</span>
           </div>
         </div>
       </div>
@@ -162,7 +162,7 @@ export default function CheckoutForm() {
             </div>
           </div>
           <Button type="submit" className="w-full" size="lg" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? 'Processando...' : `Pagar ${formatCurrency(totalPrice + 5)}`}
+            {form.formState.isSubmitting ? 'Processando...' : `Pagar ${formatCurrency(totalPrice + shippingCost)}`}
           </Button>
         </form>
       </Form>

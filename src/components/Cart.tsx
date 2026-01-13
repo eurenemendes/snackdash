@@ -8,6 +8,8 @@ import CartItem from './CartItem';
 import { Separator } from './ui/separator';
 import { ShoppingCart } from 'lucide-react';
 import AISuggestions from './AISuggestions';
+import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { Label } from './ui/label';
 
 function formatCurrency(value: number) {
   return new Intl.NumberFormat('pt-BR', {
@@ -17,7 +19,7 @@ function formatCurrency(value: number) {
 }
 
 export default function Cart() {
-  const { state, totalPrice } = useCart();
+  const { state, totalPrice, shippingCost, setShippingCost } = useCart();
 
   if (state.items.length === 0) {
     return (
@@ -54,14 +56,32 @@ export default function Cart() {
             <span>Subtotal</span>
             <span>{formatCurrency(totalPrice)}</span>
           </div>
-          <div className="flex items-center justify-between text-sm text-muted-foreground">
-            <span>Taxa de entrega</span>
-            <span>{formatCurrency(5)}</span>
+          <div className="space-y-2">
+            <span className="text-sm font-semibold">Taxa de entrega</span>
+            <RadioGroup
+              defaultValue={String(shippingCost)}
+              onValueChange={(value) => setShippingCost(Number(value))}
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="0" id="pickup" />
+                <Label htmlFor="pickup" className="text-sm font-normal flex justify-between w-full">
+                  <span>Retirar na loja</span>
+                  <span>Grátis</span>
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="0.2" id="delivery" />
+                <Label htmlFor="delivery" className="text-sm font-normal flex justify-between w-full">
+                  <span>Delivery</span>
+                  <span>{formatCurrency(0.2)}</span>
+                </Label>
+              </div>
+            </RadioGroup>
           </div>
           <Separator />
           <div className="flex items-center justify-between text-lg font-bold text-primary">
             <span>Total</span>
-            <span>{formatCurrency(totalPrice + 5)}</span>
+            <span>{formatCurrency(totalPrice + shippingCost)}</span>
           </div>
         </div>
         <Button asChild className="w-full" size="lg">
